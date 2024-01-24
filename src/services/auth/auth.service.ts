@@ -1,9 +1,4 @@
-import {
-	removeFromCookiesStorage,
-	removeFromLocalStorage,
-	saveToCookiesStorage,
-	saveToLocalStorage,
-} from './auth.helper'
+import { saveToCookiesStorage, saveToLocalStorage } from './auth.helper'
 import { IAuthResponse, IFormData } from './auth.interface'
 import { axiosClassic } from '@/api/axios'
 
@@ -41,13 +36,11 @@ export const authService = {
 	},
 
 	async logout() {
-		const response = await axiosClassic.post<boolean>('/auth/logout')
-
-		if (response.data) {
-			removeFromCookiesStorage()
-			removeFromLocalStorage('user')
-		}
-
-		return response
+		//const response = await axiosClassic.post<boolean>('/auth/logout')
+		// if (response.data) {
+		// 	removeFromCookiesStorage()
+		// 	removeFromLocalStorage('user')
+		// }
+		// return response
 	},
 }
