@@ -27,32 +27,30 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 		request.cookies.get(EnumTokens.REFRESH_TOKEN)?.value || ''
 	const path = request.nextUrl.pathname
 	const isPublicPath = path === '/login' || path === '/register'
-	console.log(path)
 	const isAdminPath = request.url.includes('/admin')
 
 	if (!isPublicPath && !refreshToken) {
 		return NextResponse.redirect(new URL('/login', request.nextUrl))
+	} else if (isPublicPath && refreshToken) {
+		return NextResponse.redirect(new URL('/', request.nextUrl))
 	}
-	// else if (isPublicPath && refreshToken) {
-	// 	return NextResponse.redirect(new URL('/', request.nextUrl))
-	// }
 
-	// try {
-	// 	const UserData = await fetchGetProfile()
+	try {
+		const UserData = await fetchGetProfile()
 
-	// 	if (UserData?.isAdmin === true) return NextResponse.next()
+		if (UserData?.isAdmin === true) return NextResponse.next()
 
-	// 	if (isAdminPath) {
-	// 		return NextResponse.rewrite(new URL('/404', request.url))
-	// 	}
+		if (isAdminPath) {
+			return NextResponse.rewrite(new URL('/404', request.url))
+		}
 
-	// 	return NextResponse.next()
-	// } catch (error) {
-	// 	request.cookies.delete(EnumTokens.ACCESS_TOKEN)
-	// 	return redirectToLogin(isAdminPath, isPublicPath, request)
-	// }
+		return NextResponse.next()
+	} catch (error) {
+		request.cookies.delete(EnumTokens.ACCESS_TOKEN)
+		return redirectToLogin(isAdminPath, isPublicPath, request)
+	}
 
-	// return NextResponse.next()
+	return NextResponse.next()
 }
 
 export const config = {
