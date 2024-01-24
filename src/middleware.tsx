@@ -17,7 +17,7 @@ const fetchGetProfile = async () => {
 		headers: {
 			Authorization: `Bearer ${accessToken}`,
 		},
-		credentials: 'include',
+		credentials: 'same-origin',
 	}).then(res => res.json()) as Promise<IUser>
 }
 
