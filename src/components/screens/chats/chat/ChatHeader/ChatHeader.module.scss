@@ -1,0 +1,35 @@
+.wrapper {
+	padding: 1.25rem /* 20px */;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 1.56rem /* 24.96px */;
+	padding-bottom: 1.56rem /* 24.96px */;
+	> div {
+		display: flex;
+		align-items: center;
+		> :first-child {
+			margin-right: 1rem /* 16px */;
+		}
+		> :last-child {
+			font-size: 0.875rem /* 14px */;
+			line-height: 1.25rem /* 20px */;
+
+			> :last-child {
+				opacity: 0.3;
+			}
+		}
+	}
+
+	> button {
+		color: #7c7275;
+		transition-property: color, background-color, border-color,
+			text-decoration-color, fill, stroke;
+		transition-timing-function: ease-linear;
+		transition-duration: 444ms;
+		transition-timing-function: linear;
+		&:hover {
+			color: white;
+		}
+	}
+}

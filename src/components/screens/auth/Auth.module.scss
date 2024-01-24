@@ -1,0 +1,64 @@
+@import '@/assets/styles/variables';
+
+.form {
+	max-width: 24rem /* 384px */;
+	margin-left: auto;
+	margin-right: auto;
+	> div {
+		margin-bottom: 1rem /* 16px */;
+		> label {
+			color: $gray-600;
+		}
+	}
+}
+
+.inputField {
+	width: 100%;
+	padding: 0.5rem;
+	border-width: 1px;
+	border-color: #718096;
+	border-radius: 0.25rem;
+	background-color: transparent;
+	color: #ffffff;
+	transition-property: color, background-color, border-color;
+	transition-duration: 0.3s;
+	margin-top: 0.25rem;
+
+	&:focus {
+		border-color: #667eea;
+		outline: none;
+	}
+}
+.btnPrimary {
+	width: 100%;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	color: #ffffff;
+	font-weight: 600;
+	border-radius: 0.25rem;
+	transition-property: all;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in-out;
+	margin-top: 0.25rem;
+
+	&:hover {
+		transform: scale(1.05);
+	}
+}
+
+.isLogin {
+	--tw-bg-opacity: 1;
+	background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+
+.isRegister {
+	--tw-bg-opacity: 1;
+	background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+
+.isPending {
+	opacity: 0.75;
+	cursor: not-allowed;
+}

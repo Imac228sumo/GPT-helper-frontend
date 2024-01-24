@@ -1,0 +1,10 @@
+.loader {
+	color: #406aff;
+	animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}

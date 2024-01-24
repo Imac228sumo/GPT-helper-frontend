@@ -1,0 +1,16 @@
+.button {
+	background-color: rgb(111 58 255 / 1);
+	border-radius: 1rem /* 16px */;
+	transition-property: color, background-color, border-color,
+		text-decoration-color, fill, stroke;
+	transition-timing-function: ease-linear;
+	transition-duration: 444ms;
+	transition-duration: 300ms;
+	transition-timing-function: linear;
+	transition-timing-function: linear;
+	padding-left: 2.5rem /* 40px */;
+	padding-right: 2.5rem /* 40px */;
+	&:hover {
+		background-color: rgb(111 58 255 / 0.7);
+	}
+}
