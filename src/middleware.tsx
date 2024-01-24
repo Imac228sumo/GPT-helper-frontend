@@ -26,11 +26,11 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 	const isPublicPath = path === '/login' || path === '/register'
 	const isAdminPath = request.url.includes('/admin')
 
-	if (!isPublicPath && !refreshToken) {
-		return NextResponse.redirect(new URL('/login', request.nextUrl))
-	} else if (isPublicPath && refreshToken) {
-		return NextResponse.redirect(new URL('/', request.nextUrl))
-	}
+	// if (!isPublicPath && !refreshToken) {
+	// 	return NextResponse.redirect(new URL('/login', request.nextUrl))
+	// } else if (isPublicPath && refreshToken) {
+	// 	return NextResponse.redirect(new URL('/', request.nextUrl))
+	// }
 
 	// try {
 	// 	// const UserData = await fetchGetProfile()
