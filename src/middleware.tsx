@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-import { EnumTokens } from '@/services/auth/auth.service'
+import { EnumTokens } from './services/auth/auth.service'
 
 //запрос на стороне сервера
 // const fetchGetProfile = async () => {
@@ -22,13 +22,15 @@ import { EnumTokens } from '@/services/auth/auth.service'
 export async function middleware(request: NextRequest, response: NextResponse) {
 	const refreshToken =
 		request.cookies.get(EnumTokens.REFRESH_TOKEN)?.value || ''
+	console.log(refreshToken)
 	const path = request.nextUrl.pathname
 	const isPublicPath = path === '/login' || path === '/register'
 	const isAdminPath = request.url.includes('/admin')
 
-	// if (!isPublicPath && !refreshToken) {
-	// 	return NextResponse.redirect(new URL('/login', request.nextUrl))
-	// } else if (isPublicPath && refreshToken) {
+	if (!isPublicPath && !refreshToken) {
+		return NextResponse.redirect(new URL('/login', request.nextUrl))
+	}
+	// else if (isPublicPath && refreshToken) {
 	// 	return NextResponse.redirect(new URL('/', request.nextUrl))
 	// }
 

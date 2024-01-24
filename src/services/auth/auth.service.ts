@@ -1,4 +1,9 @@
-import { saveToCookiesStorage, saveToLocalStorage } from './auth.helper'
+import {
+	removeFromCookiesStorage,
+	removeFromLocalStorage,
+	saveToCookiesStorage,
+	saveToLocalStorage,
+} from './auth.helper'
 import { IAuthResponse, IFormData } from './auth.interface'
 import { axiosClassic } from '@/api/axios'
 
@@ -23,22 +28,22 @@ export const authService = {
 	},
 
 	async getNewTokens() {
-		// const response = await axiosClassic.post<IAuthResponse>(
-		// 	'/auth/login/access-token'
-		// )
-		// if (response.data.accessToken) {
-		// 	saveToCookiesStorage(response.data.accessToken)
-		// 	saveToLocalStorage(response.data)
-		// }
-		// return response
+		const response = await axiosClassic.post<IAuthResponse>(
+			'/auth/login/access-token'
+		)
+		if (response.data.accessToken) {
+			saveToCookiesStorage(response.data.accessToken)
+			saveToLocalStorage(response.data)
+		}
+		return response
 	},
 
 	async logout() {
-		//const response = await axiosClassic.post<boolean>('/auth/logout')
-		// if (response.data) {
-		// 	removeFromCookiesStorage()
-		// 	removeFromLocalStorage('user')
-		// }
-		// return response
+		const response = await axiosClassic.post<boolean>('/auth/logout')
+		if (response.data) {
+			removeFromCookiesStorage()
+			removeFromLocalStorage('user')
+		}
+		return response
 	},
 }

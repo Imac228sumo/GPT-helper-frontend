@@ -7,22 +7,21 @@ import { Chat } from '../chats/chat/Chat'
 
 import styles from './Home.module.scss'
 import { useActions } from '@/hooks/useActions'
-import { useAuth } from '@/hooks/useAuth'
 
 export const Home: FC = () => {
 	const { push } = useRouter()
-	const { isLoading: isLogoutPending } = useAuth()
+	// const { isLoading: isLogoutPending } = useAuth()
 	const { logout } = useActions()
 
 	return (
 		<div className={styles.wrapper}>
 			<button
 				style={{ fontSize: '25px', marginBottom: '20px' }}
-				onClick={() => {
-					logout()
-					push('/login')
-				}}
-				disabled={isLogoutPending}
+				// onClick={() => {
+				// 	logout()
+				// 	push('/login')
+				// }}
+				// disabled={isLogoutPending}
 			>
 				Logout
 			</button>

@@ -7,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from './Auth.module.scss'
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'
-import { useAuthRedirect } from '@/hooks/useAuthRedirect'
 import { IFormData } from '@/services/auth/auth.interface'
 
 interface AuthFormProps {
@@ -15,7 +14,7 @@ interface AuthFormProps {
 }
 
 const AuthForm: FC<AuthFormProps> = ({ isLogin }) => {
-	useAuthRedirect()
+	// useAuthRedirect()
 	const {
 		register,
 		handleSubmit,
