@@ -23,9 +23,17 @@ const fetchGetProfile = async () => {
 
 //проверка на стороне сервера
 export async function middleware(request: NextRequest, response: NextResponse) {
+	const refreshToken =
+		request.cookies.get(EnumTokens.REFRESH_TOKEN)?.value || ''
 	const path = request.nextUrl.pathname
 	const isPublicPath = path === '/login' || path === '/register'
 	const isAdminPath = request.url.includes('/admin')
+
+	if (!isPublicPath && !refreshToken) {
+		return NextResponse.redirect(new URL('/login', request.nextUrl))
+	} else if (isPublicPath && refreshToken) {
+		return NextResponse.redirect(new URL('/', request.nextUrl))
+	}
 
 	try {
 		const UserData = await fetchGetProfile()
@@ -41,16 +49,6 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 		// request.cookies.delete(EnumTokens.ACCESS_TOKEN)
 		// return redirectToLogin(isAdminPath, isPublicPath, request)
 	}
-
-	const refreshToken =
-		request.cookies.get(EnumTokens.REFRESH_TOKEN)?.value || ''
-
-	if (!isPublicPath && !refreshToken) {
-		return NextResponse.redirect(new URL('/login', request.nextUrl))
-	}
-	// else if (isPublicPath && refreshToken) {
-	// 	return NextResponse.redirect(new URL('/', request.nextUrl))
-	// }
 
 	return NextResponse.next()
 }
