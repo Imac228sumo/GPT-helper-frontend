@@ -1,7 +1,7 @@
 import axios, { CreateAxiosDefaults } from 'axios'
 
 import { errorCatch, getContentType } from './api.helper'
-import { API_URL } from '@/configs/api.config'
+import { API_SERVER_URL } from '@/configs/api.config'
 import { IS_PRODUCTION } from '@/constants/constants'
 import {
 	getAccessToken,
@@ -10,13 +10,13 @@ import {
 import { authService } from '@/services/auth/auth.service'
 
 const axiosClassicOptions: CreateAxiosDefaults = {
-	baseURL: IS_PRODUCTION ? API_URL : API_URL,
+	baseURL: IS_PRODUCTION ? API_SERVER_URL : API_SERVER_URL,
 	headers: getContentType(),
 	withCredentials: true,
 }
 
 const axiosInstanceOptions: CreateAxiosDefaults = {
-	baseURL: API_URL,
+	baseURL: API_SERVER_URL,
 	headers: getContentType(),
 	withCredentials: true,
 }
